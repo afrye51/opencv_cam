@@ -53,7 +53,8 @@ namespace opencv_cam
 
     // Open file or device
     if (cxt_.file_) {
-      capture_ = std::make_shared<cv::VideoCapture>(cxt_.filename_);
+      // capture_ = std::make_shared<cv::VideoCapture>(cxt_.filename_);
+      capture_ = std::make_shared<cv::VideoCapture>("rtsp://192.168.55.32/stream1");
 
       if (!capture_->isOpened()) {
         RCLCPP_ERROR(get_logger(), "cannot open file %s", cxt_.filename_.c_str());
@@ -76,7 +77,8 @@ namespace opencv_cam
       next_stamp_ = now();
 
     } else {
-      capture_ = std::make_shared<cv::VideoCapture>(cxt_.index_);
+      // capture_ = std::make_shared<cv::VideoCapture>(cxt_.index_);
+      capture_ = std::make_shared<cv::VideoCapture>("rtsp://192.168.55.32/stream1");
 
       if (!capture_->isOpened()) {
         RCLCPP_ERROR(get_logger(), "cannot open device %d", cxt_.index_);
